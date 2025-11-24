@@ -52,6 +52,11 @@ public class CourseEntryController implements Initializable {
     private Button calculateGPAButton;
 
     private ObservableList<Course> courseList = FXCollections.observableArrayList();
+    /*
+     * Type declaration - This is a special JavaFX list interface
+<Course> means: "This list can only hold Course objects"
+Observable means: When items are added/removed, it automatically notifies any UI components watching it
+     */
     private double totalCreditTarget = 0.0;
     private double currentTotalCredits = 0.0;
 
