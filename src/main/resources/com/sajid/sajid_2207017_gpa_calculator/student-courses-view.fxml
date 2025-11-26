@@ -10,17 +10,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sajid.sajid_2207017_gpa_calculator.StudentCoursesController">
+<BorderPane prefHeight="600.0" prefWidth="1000.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sajid.sajid_2207017_gpa_calculator.StudentCoursesController">
 
     <!-- Top Section: Student Info -->
     <top>
-        <VBox alignment="CENTER" spacing="10" style="-fx-background-color: #2196F3; -fx-padding: 20;">
-            <Label text="Student Course Details" textFill="WHITE">
+        <VBox alignment="CENTER" spacing="10" styleClass="header-container">
+            <Label text="Student Course Details" styleClass="label-header">
                 <font>
                     <Font name="Arial Bold" size="28" />
                 </font>
             </Label>
-            <Label fx:id="studentInfoLabel" text="Student Information" textFill="WHITE">
+            <Label fx:id="studentInfoLabel" text="Student Information" styleClass="label-info">
                 <font>
                     <Font name="Arial" size="16" />
                 </font>
@@ -33,24 +33,24 @@
         <VBox spacing="15" style="-fx-padding: 20;">
             
             <!-- Summary Section -->
-            <HBox spacing="30" alignment="CENTER" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 10;">
+            <HBox spacing="30" alignment="CENTER" styleClass="summary-box">
                 <VBox alignment="CENTER" spacing="5">
-                    <Label text="Total Courses" style="-fx-font-weight: bold; -fx-font-size: 14;" />
-                    <Label fx:id="totalCoursesLabel" text="0" style="-fx-font-size: 24; -fx-text-fill: #2196F3;" />
+                    <Label text="Total Courses" styleClass="stat-label" />
+                    <Label fx:id="totalCoursesLabel" text="0" styleClass="stat-value" />
                 </VBox>
                 <VBox alignment="CENTER" spacing="5">
-                    <Label text="Total Credits" style="-fx-font-weight: bold; -fx-font-size: 14;" />
-                    <Label fx:id="totalCreditsLabel" text="0.0" style="-fx-font-size: 24; -fx-text-fill: #4CAF50;" />
+                    <Label text="Total Credits" styleClass="stat-label" />
+                    <Label fx:id="totalCreditsLabel" text="0.0" styleClass="stat-value" />
                 </VBox>
                 <VBox alignment="CENTER" spacing="5">
-                    <Label text="CGPA" style="-fx-font-weight: bold; -fx-font-size: 14;" />
-                    <Label fx:id="cgpaLabel" text="0.00" style="-fx-font-size: 24; -fx-text-fill: #FF9800;" />
+                    <Label text="CGPA" styleClass="stat-label" />
+                    <Label fx:id="cgpaLabel" text="0.00" styleClass="stat-value" />
                 </VBox>
             </HBox>
             
             <!-- Courses Table -->
             <Label style="-fx-font-size: 16; -fx-font-weight: bold;" text="Course List" />
-            <TableView fx:id="coursesTable" style="-fx-background-color: white; -fx-background-radius: 10;" VBox.vgrow="ALWAYS">
+            <TableView fx:id="coursesTable" VBox.vgrow="ALWAYS">
                 <columns>
                     <TableColumn fx:id="yearColumn" text="Year" prefWidth="60" />
                     <TableColumn fx:id="termColumn" text="Term" prefWidth="60" />
@@ -71,8 +71,8 @@
 
     <!-- Bottom Section: Close Button -->
     <bottom>
-        <HBox alignment="CENTER" spacing="15" style="-fx-background-color: white; -fx-padding: 15;">
-            <Button onAction="#onCloseClick" style="-fx-background-color: #757575; -fx-text-fill: white; -fx-font-size: 14; -fx-padding: 10 30;" text="Close" />
+        <HBox alignment="CENTER" spacing="15" style="-fx-padding: 15;">
+            <Button onAction="#onCloseClick" styleClass="button-secondary" text="Close" />
         </HBox>
     </bottom>
 

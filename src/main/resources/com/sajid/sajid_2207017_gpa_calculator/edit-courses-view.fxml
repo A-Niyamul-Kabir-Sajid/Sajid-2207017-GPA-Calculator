@@ -7,13 +7,14 @@
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.sajid.sajid_2207017_gpa_calculator.EditCoursesController"
-            prefHeight="600.0" prefWidth="1000.0">
+            prefHeight="600.0" prefWidth="1000.0"
+            stylesheets="@styles.css">
     
     <!-- Top: Student Info -->
     <top>
-        <VBox spacing="10" style="-fx-background-color: #34495e; -fx-padding: 15;">
+        <VBox spacing="10" styleClass="student-info-header">
             <Label fx:id="studentInfoLabel" 
-                   style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;"
+                   styleClass="label-subheader"
                    text="Roll: --- | Name: ---"/>
         </VBox>
     </top>
@@ -26,7 +27,7 @@
             </padding>
             
             <Label text="Edit Course Details (Double-click cells to edit)" 
-                   style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                   styleClass="label-subheader"/>
             
             <TableView fx:id="coursesTable" editable="true" VBox.vgrow="ALWAYS">
                 <columns>
@@ -46,18 +47,18 @@
             </TableView>
             
             <!-- Summary Section -->
-            <HBox spacing="30" alignment="CENTER" style="-fx-background-color: #ecf0f1; -fx-padding: 15; -fx-background-radius: 5;">
+            <HBox spacing="30" alignment="CENTER" styleClass="summary-box">
                 <VBox alignment="CENTER" spacing="5">
-                    <Label text="Total Courses" style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;"/>
-                    <Label fx:id="totalCoursesLabel" text="0" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                    <Label text="Total Courses" styleClass="stat-label"/>
+                    <Label fx:id="totalCoursesLabel" text="0" styleClass="stat-value"/>
                 </VBox>
                 <VBox alignment="CENTER" spacing="5">
-                    <Label text="Total Credits" style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;"/>
-                    <Label fx:id="totalCreditsLabel" text="0.0" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                    <Label text="Total Credits" styleClass="stat-label"/>
+                    <Label fx:id="totalCreditsLabel" text="0.0" styleClass="stat-value"/>
                 </VBox>
                 <VBox alignment="CENTER" spacing="5">
-                    <Label text="CGPA" style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;"/>
-                    <Label fx:id="cgpaLabel" text="0.00" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #27ae60;"/>
+                    <Label text="CGPA" styleClass="stat-label"/>
+                    <Label fx:id="cgpaLabel" text="0.00" styleClass="stat-value"/>
                 </VBox>
             </HBox>
         </VBox>
@@ -67,16 +68,16 @@
     <bottom>
         <HBox spacing="15" alignment="CENTER" style="-fx-padding: 15;">
             <Button text="Add New Course" onAction="#onAddCourseClick" 
-                    style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 20;"
+                    styleClass="button-success"
                     prefWidth="150"/>
             <Button text="Delete Selected" onAction="#onDeleteCourseClick" 
-                    style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 20;"
+                    styleClass="button-danger"
                     prefWidth="150"/>
             <Button text="Save Changes" onAction="#onSaveClick" 
-                    style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 20;"
+                    styleClass="button"
                     prefWidth="150"/>
             <Button text="Cancel" onAction="#onCancelClick" 
-                    style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 20;"
+                    styleClass="button-secondary"
                     prefWidth="150"/>
         </HBox>
     </bottom>

@@ -10,17 +10,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="650.0" prefWidth="800.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sajid.sajid_2207017_gpa_calculator.CourseManagementController">
+<BorderPane prefHeight="650.0" prefWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sajid.sajid_2207017_gpa_calculator.CourseManagementController">
 
     <!-- Top Section: Title -->
     <top>
-        <VBox alignment="CENTER" spacing="10" style="-fx-background-color: #2196F3; -fx-padding: 20;">
-            <Label text="Course Management" textFill="WHITE">
+        <VBox alignment="CENTER" spacing="10" styleClass="header-container">
+            <Label text="Course Management" styleClass="label-header" textFill="WHITE">
                 <font>
                     <Font name="Arial Bold" size="28" />
                 </font>
             </Label>
-            <Label text="Manage course information and statistics" textFill="WHITE">
+            <Label text="Manage course information and statistics" styleClass="label-info" textFill="WHITE">
                 <font>
                     <Font name="Arial" size="14" />
                 </font>
@@ -33,7 +33,7 @@
         <VBox spacing="20" style="-fx-padding: 20;">
             
             <!-- Input Form Section -->
-            <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+            <VBox spacing="15" styleClass="info-box">
                 <Label style="-fx-font-size: 16; -fx-font-weight: bold;" text="Student Information" />
                 
                 <HBox spacing="15" alignment="CENTER_LEFT">
@@ -46,7 +46,7 @@
             </VBox>
             
              <Label style="-fx-font-size: 16; -fx-font-weight: bold;" text="Student List" />
-             <TableView fx:id="courseTable" style="-fx-background-color: white; -fx-background-radius: 10;" VBox.vgrow="ALWAYS">
+             <TableView fx:id="courseTable" VBox.vgrow="ALWAYS">
                  <columns>
                      <TableColumn fx:id="rollColumn" text="Roll no" />
                      <TableColumn fx:id="nameColumn" text="Name" />
@@ -62,17 +62,17 @@
             <!-- Table View -->
             <VBox spacing="10" VBox.vgrow="ALWAYS">
                
-               <!-- Input Form -->
-               <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+               <!-- Database Actions -->
+               <VBox spacing="15" styleClass="info-box">
                    <Label style="-fx-font-size: 16; -fx-font-weight: bold;" text="DataBase" />
                    
                    <!-- Action Buttons -->
                    <HBox alignment="CENTER" spacing="10">
-                       <Button onAction="#onAddClick" prefWidth="90" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 12; -fx-padding: 8 20;" text="Add" />
-                       <Button onAction="#onLoadClick" prefWidth="90" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 12; -fx-padding: 8 20;" text="Load" />
-                       <Button onAction="#onUpdateClick" prefWidth="90" style="-fx-background-color: #FF9800; -fx-text-fill: white; -fx-font-size: 12; -fx-padding: 8 20;" text="Update" />
-                       <Button onAction="#onFindClick" prefWidth="90" style="-fx-background-color: #00BCD4; -fx-text-fill: white; -fx-font-size: 12; -fx-padding: 8 20;" text="Find" />
-                       <Button onAction="#onEraseClick" prefWidth="90" style="-fx-background-color: #F44336; -fx-text-fill: white; -fx-font-size: 12; -fx-padding: 8 20;" text="Erase" />
+                       <Button onAction="#onAddClick" prefWidth="90" styleClass="button-success" text="Add" />
+                       <Button onAction="#onLoadClick" prefWidth="90" styleClass="button" text="Load" />
+                       <Button onAction="#onUpdateClick" prefWidth="90" styleClass="button-warning" text="Update" />
+                       <Button onAction="#onFindClick" prefWidth="90" styleClass="button" text="Find" />
+                       <Button onAction="#onEraseClick" prefWidth="90" styleClass="button-danger" text="Erase" />
                    </HBox>
                </VBox>
             </VBox>
@@ -81,8 +81,8 @@
 
     <!-- Bottom Section: Navigation Buttons -->
     <bottom>
-        <HBox alignment="CENTER" spacing="15" style="-fx-background-color: white; -fx-padding: 15;">
-            <Button onAction="#onBackToHomeClick" style="-fx-background-color: #757575; -fx-text-fill: white; -fx-font-size: 14; -fx-padding: 10 30;" text="← Back to Home" />
+        <HBox alignment="CENTER" spacing="15" style="-fx-padding: 15;">
+            <Button onAction="#onBackToHomeClick" styleClass="button-secondary" text="← Back to Home" />
         </HBox>
     </bottom>
 
