@@ -66,32 +66,38 @@
                     <ColumnConstraints hgrow="ALWAYS" maxWidth="465.3332824707032" minWidth="200.0" prefWidth="452.66670735677076" />
                 </columnConstraints>
 
-                <Label text="Course Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                <TextField fx:id="courseNameField" promptText="Enter course name" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                <Label text="Year:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <TextField fx:id="yearField" promptText="e.g., 1, 2, 3, 4" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
-                <Label text="Course Code:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                <TextField fx:id="courseCodeField" promptText="e.g., CSE 2200" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Label text="Term:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <TextField fx:id="termField" promptText="e.g., 1, 2" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-                <Label text="Course Credit:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                <TextField fx:id="courseCreditField" promptText="e.g., 3.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Label text="Course Name:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <TextField fx:id="courseNameField" promptText="Enter course name" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
-                <Label text="Teacher 1 Name:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-                <TextField fx:id="teacher1Field" promptText="Enter teacher name" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <Label text="Course Code:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                <TextField fx:id="courseCodeField" promptText="e.g., CSE 2200" GridPane.columnIndex="1" GridPane.rowIndex="3" />
 
-                <Label text="Teacher 2 Name:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-                <TextField fx:id="teacher2Field" promptText="Enter teacher name (optional)" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                <Label text="Course Credit:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                <TextField fx:id="courseCreditField" promptText="e.g., 3.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
 
-                <Label text="Grade:" GridPane.columnIndex="0" GridPane.rowIndex="5" />
-               <ComboBox fx:id="gradeComboBox" prefWidth="200.0" promptText="Select grade" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                <Label text="Teacher 1 Name:" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                <TextField fx:id="teacher1Field" promptText="Enter teacher name" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+                <Label text="Teacher 2 Name:" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+                <TextField fx:id="teacher2Field" promptText="Enter teacher name (optional)" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+
+                <Label text="Grade:" GridPane.columnIndex="0" GridPane.rowIndex="7" />
+               <ComboBox fx:id="gradeComboBox" prefWidth="200.0" promptText="Select grade" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                <rowConstraints>
                   <RowConstraints />
                   <RowConstraints />
                   <RowConstraints />
                   <RowConstraints />
                   <RowConstraints />
-                  <RowConstraints maxHeight="26.0" minHeight="0.0" prefHeight="26.0" />
-                  <RowConstraints maxHeight="26.0" minHeight="0.0" prefHeight="0.0" />
-                  <RowConstraints maxHeight="25.333333333333343" minHeight="0.0" prefHeight="0.0" />
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
                </rowConstraints>
             </GridPane>
 
@@ -123,12 +129,14 @@
                 </Label>
                 <TableView fx:id="courseTableView" prefHeight="200.0">
                     <columns>
-                        <TableColumn fx:id="nameColumn" prefWidth="150.0" text="Course Name" />
-                        <TableColumn fx:id="codeColumn" prefWidth="100.0" text="Code" />
-                        <TableColumn fx:id="creditColumn" prefWidth="70.0" text="Credit" />
-                        <TableColumn fx:id="teacher1Column" prefWidth="120.0" text="Teacher 1" />
-                        <TableColumn fx:id="teacher2Column" prefWidth="120.0" text="Teacher 2" />
-                        <TableColumn fx:id="gradeColumn" prefWidth="70.0" text="Grade" />
+                        <TableColumn fx:id="yearColumn" prefWidth="60.0" text="Year" />
+                        <TableColumn fx:id="termColumn" prefWidth="60.0" text="Term" />
+                        <TableColumn fx:id="nameColumn" prefWidth="130.0" text="Course Name" />
+                        <TableColumn fx:id="codeColumn" prefWidth="90.0" text="Code" />
+                        <TableColumn fx:id="creditColumn" prefWidth="60.0" text="Credit" />
+                        <TableColumn fx:id="teacher1Column" prefWidth="110.0" text="Teacher 1" />
+                        <TableColumn fx:id="teacher2Column" prefWidth="110.0" text="Teacher 2" />
+                        <TableColumn fx:id="gradeColumn" prefWidth="60.0" text="Grade" />
                     </columns>
                 </TableView>
 
