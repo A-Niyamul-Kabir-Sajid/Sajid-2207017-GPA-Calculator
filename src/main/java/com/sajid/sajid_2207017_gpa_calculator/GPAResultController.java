@@ -108,21 +108,6 @@ public class GPAResultController implements Initializable {
     }
 
     @FXML
-    protected void onBackToCourseEntry(ActionEvent event) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("course-entry-view.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 900, 700);
-            
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.setTitle("GPA Calculator - Course Entry");
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
     protected void onStartNew(ActionEvent event) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("home-view.fxml"));

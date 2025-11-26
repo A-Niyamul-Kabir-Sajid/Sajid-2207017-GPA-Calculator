@@ -12,19 +12,19 @@ public class HomeController {
     @FXML
     protected void onStartButtonClick(ActionEvent event) {
         try {
-            System.out.println("Button clicked! Loading course entry view...");
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("course-entry-view.fxml"));
+            System.out.println("Button clicked! Loading course management view...");
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("course-management-view.fxml"));
             System.out.println("FXMLLoader created");
-            Scene scene = new Scene(fxmlLoader.load(), 900, 700);
+            Scene scene = new Scene(fxmlLoader.load(), 800, 650);
             System.out.println("Scene loaded");
             
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
-            stage.setTitle("GPA Calculator - Course Entry");
+            stage.setTitle("GPA Calculator - Course Management");
             stage.show();
             System.out.println("Scene displayed successfully");
         } catch (Exception e) {
-            System.err.println("Error loading course entry view:");
+            System.err.println("Error loading course management view:");
             e.printStackTrace();
         }
     }

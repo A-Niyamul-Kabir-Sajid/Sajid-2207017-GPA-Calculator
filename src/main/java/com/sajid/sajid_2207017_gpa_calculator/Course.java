@@ -1,6 +1,8 @@
 package com.sajid.sajid_2207017_gpa_calculator;
 
 public class Course {
+    private int year;
+    private int term;
     private String courseName;
     private String courseCode;
     private double courseCredit;
@@ -8,8 +10,10 @@ public class Course {
     private String teacher2Name;
     private String grade;
 
-    public Course(String courseName, String courseCode, double courseCredit, 
+    public Course(int year, int term, String courseName, String courseCode, double courseCredit, 
                   String teacher1Name, String teacher2Name, String grade) {
+        this.year = year;
+        this.term = term;
         this.courseName = courseName;
         this.courseCode = courseCode;
         this.courseCredit = courseCredit;
@@ -19,6 +23,14 @@ public class Course {
     }
 
     // Getters
+    public int getYear() {
+        return year;
+    }
+
+    public int getTerm() {
+        return term;
+    }
+
     public String getCourseName() {
         return courseName;
     }
@@ -44,6 +56,14 @@ public class Course {
     }
 
     // Setters
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public void setTerm(int term) {
+        this.term = term;
+    }
+
     public void setCourseName(String courseName) {
         this.courseName = courseName;
     }
@@ -89,6 +109,6 @@ public class Course {
 
     @Override
     public String toString() {
-        return courseName + " (" + courseCode + ") - " + grade;
+        return "Year " + year + " Term " + term + ": " + courseName + " (" + courseCode + ") - " + grade;
     }
 }

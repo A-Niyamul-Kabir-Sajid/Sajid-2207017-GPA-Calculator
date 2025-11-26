@@ -21,6 +21,10 @@ public class CourseEntryController implements Initializable {
     @FXML
     private TextField totalCreditField;
     @FXML
+    private TextField yearField;
+    @FXML
+    private TextField termField;
+    @FXML
     private TextField courseNameField;
     @FXML
     private TextField courseCodeField;
@@ -34,6 +38,10 @@ public class CourseEntryController implements Initializable {
     private ComboBox<String> gradeComboBox;
     @FXML
     private TableView<Course> courseTableView;
+    @FXML
+    private TableColumn<Course, Integer> yearColumn;
+    @FXML
+    private TableColumn<Course, Integer> termColumn;
     @FXML
     private TableColumn<Course, String> nameColumn;
     @FXML
@@ -59,6 +67,10 @@ Observable means: When items are added/removed, it automatically notifies any UI
      */
     private double totalCreditTarget = 0.0;
     private double currentTotalCredits = 0.0;
+    
+    // Student data
+    private String studentRoll;
+    private String studentName;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -68,6 +80,8 @@ Observable means: When items are added/removed, it automatically notifies any UI
         ));
 
         // Set up table columns
+        yearColumn.setCellValueFactory(new PropertyValueFactory<>("year"));
+        termColumn.setCellValueFactory(new PropertyValueFactory<>("term"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("courseName"));
         codeColumn.setCellValueFactory(new PropertyValueFactory<>("courseCode"));
         creditColumn.setCellValueFactory(new PropertyValueFactory<>("courseCredit"));
@@ -77,6 +91,16 @@ Observable means: When items are added/removed, it automatically notifies any UI
 
         // Bind the course list to the table
         courseTableView.setItems(courseList);
+    }
+    
+    /**
+     * Set student data from course management scene
+     * @param roll Student roll number
+     * @param name Student name
+     */
+    public void setStudentData(String roll, String name) {
+        this.studentRoll = roll;
+        this.studentName = name;
     }
 
     @FXML
@@ -105,7 +129,8 @@ Observable means: When items are added/removed, it automatically notifies any UI
         }
 
         // Validate inputs
-        if (courseNameField.getText().isEmpty() || courseCodeField.getText().isEmpty() ||
+        if (yearField.getText().isEmpty() || termField.getText().isEmpty() ||
+                courseNameField.getText().isEmpty() || courseCodeField.getText().isEmpty() ||
                 courseCreditField.getText().isEmpty() || teacher1Field.getText().isEmpty() ||
                 gradeComboBox.getValue() == null) {
             showAlert(Alert.AlertType.WARNING, "Missing Information", 
@@ -114,7 +139,14 @@ Observable means: When items are added/removed, it automatically notifies any UI
         }
 
         try {
+            int year = Integer.parseInt(yearField.getText());
+            int term = Integer.parseInt(termField.getText());
             double credit = Double.parseDouble(courseCreditField.getText());
+            
+            if (year <= 0 || term <= 0) {
+                showAlert(Alert.AlertType.ERROR, "Invalid Input", "Year and Term must be greater than 0");
+                return;
+            }
             
             if (credit <= 0) {
                 showAlert(Alert.AlertType.ERROR, "Invalid Credit", "Course credit must be greater than 0");
@@ -131,6 +163,8 @@ Observable means: When items are added/removed, it automatically notifies any UI
 
             // Create and add course
             Course course = new Course(
+                    year,
+                    term,
                     courseNameField.getText(),
                     courseCodeField.getText(),
                     credit,
@@ -234,8 +268,47 @@ Observable means: When items are added/removed, it automatically notifies any UI
             showAlert(Alert.AlertType.WARNING, "No Courses", "Please add at least one course before calculating GPA");
             return;
         }
+        
+        // Check if student data is set
+        if (studentRoll == null || studentName == null) {
+            showAlert(Alert.AlertType.ERROR, "Missing Student Data", "Student information is missing!");
+            return;
+        }
 
         try {
+            // Create Student object
+            Student student = new Student(studentRoll, studentName);
+            
+            // Add all courses to student
+            for (Course course : courseList) {
+                student.getCourses().add(course);
+            }
+            
+            // Calculate GPA
+            double cgpa = student.calculateGPA();
+            double totalCredits = student.getTotalCredits();
+            
+            // Save to database
+            DatabaseManager dbManager = DatabaseManager.getInstance();
+            
+            // Check if student exists
+            Student existingStudent = dbManager.getStudentByRoll(studentRoll);
+            if (existingStudent == null) {
+                // Insert new student
+                dbManager.insertStudent(student);
+            } else {
+                // Update existing student
+                dbManager.updateStudent(student);
+            }
+            
+            // Insert all courses
+            for (Course course : courseList) {
+                dbManager.insertCourse(studentRoll, course);
+            }
+            
+            System.out.println("Student data saved to database: " + studentName + " (" + studentRoll + ")");
+            
+            // Navigate to GPA result view
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("gpa-result-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 900, 700);
             
@@ -247,12 +320,17 @@ Observable means: When items are added/removed, it automatically notifies any UI
             stage.setScene(scene);
             stage.setTitle("GPA Calculator - Results");
             stage.show();
-        } catch (IOException e) {
+            
+        } catch (Exception e) {
             e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Error", 
+                    "Failed to process data: " + e.getMessage());
         }
     }
 
     private void clearForm() {
+        yearField.clear();
+        termField.clear();
         courseNameField.clear();
         courseCodeField.clear();
         courseCreditField.clear();

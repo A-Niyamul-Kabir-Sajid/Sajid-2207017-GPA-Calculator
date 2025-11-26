@@ -115,11 +115,6 @@
             <padding>
                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
             </padding>
-            <Button onAction="#onBackToCourseEntry" text="Back to Course Entry">
-                <font>
-                    <Font size="14.0" />
-                </font>
-            </Button>
             <Button onAction="#onStartNew" text="Start New Calculation">
                 <font>
                     <Font name="System Bold" size="14.0" />
